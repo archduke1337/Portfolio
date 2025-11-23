@@ -35,10 +35,12 @@ export const ContactForm = ({ onSubmit }: ContactFormProps) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       onSubmit={handleSubmit}
-      className="glass-effect rounded-xl p-8 md:p-12 border-cyan/30 space-y-6 max-w-2xl mx-auto"
+      className="glass-effect rounded-2xl p-8 md:p-12 border-cyan/30 space-y-6 max-w-2xl mx-auto hover:border-cyan/60 transition-colors duration-300"
     >
       <div className="flex items-center gap-3 mb-8">
-        <Mail className="text-cyan" size={24} />
+        <div className="p-3 bg-cyan/20 rounded-lg">
+          <Mail className="text-cyan" size={24} />
+        </div>
         <h2 className="text-2xl font-bold text-white">Send a Message</h2>
       </div>
 
@@ -48,13 +50,14 @@ export const ContactForm = ({ onSubmit }: ContactFormProps) => {
         placeholder="Your name"
         value={formData.name}
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        className="bg-black/30"
+        className="bg-black/30 rounded-lg"
         classNames={{
-          label: 'text-cyan',
-          input: 'text-white placeholder-gray-500',
-          inputWrapper: 'border-cyan/30 hover:border-cyan/60',
+          label: 'text-cyan font-semibold',
+          input: 'text-white placeholder-gray-500 bg-black/50',
+          inputWrapper: 'border-cyan/30 hover:border-cyan/60 focus-within:border-cyan transition-colors duration-200',
         }}
         required
+        size="lg"
       />
 
       <Input
@@ -63,13 +66,14 @@ export const ContactForm = ({ onSubmit }: ContactFormProps) => {
         placeholder="your@email.com"
         value={formData.email}
         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-        className="bg-black/30"
+        className="bg-black/30 rounded-lg"
         classNames={{
-          label: 'text-cyan',
-          input: 'text-white placeholder-gray-500',
-          inputWrapper: 'border-cyan/30 hover:border-cyan/60',
+          label: 'text-cyan font-semibold',
+          input: 'text-white placeholder-gray-500 bg-black/50',
+          inputWrapper: 'border-cyan/30 hover:border-cyan/60 focus-within:border-cyan transition-colors duration-200',
         }}
         required
+        size="lg"
       />
 
       <Textarea
@@ -77,26 +81,27 @@ export const ContactForm = ({ onSubmit }: ContactFormProps) => {
         placeholder="Your message..."
         value={formData.message}
         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-        className="bg-black/30 min-h-32"
+        className="bg-black/30 rounded-lg min-h-32"
         classNames={{
-          label: 'text-cyan',
-          input: 'text-white placeholder-gray-500',
-          inputWrapper: 'border-cyan/30 hover:border-cyan/60',
+          label: 'text-cyan font-semibold',
+          input: 'text-white placeholder-gray-500 bg-black/50 resize-none',
+          inputWrapper: 'border-cyan/30 hover:border-cyan/60 focus-within:border-cyan transition-colors duration-200',
         }}
         required
+        size="lg"
       />
 
       <Button
         type="submit"
         isLoading={isSubmitting}
-        className="w-full bg-gradient-to-r from-cyan to-blue text-black font-bold py-6 text-lg"
+        className="w-full bg-gradient-to-r from-cyan to-blue text-black font-bold py-6 text-lg shadow-lg shadow-cyan/50 hover:shadow-cyan/70 transition-shadow duration-200"
         endContent={!isSubmitting && <Send size={20} />}
       >
         {isSubmitting ? 'Sending...' : 'Send Message'}
       </Button>
 
       <p className="text-xs text-gray-400 text-center">
-        Or email me directly at <span className="text-cyan font-semibold">gaurav@zocav.com</span>
+        Or email me directly at <span className="text-cyan font-semibold hover:text-blue transition-colors">gaurav@zocav.com</span>
       </p>
     </motion.form>
   );

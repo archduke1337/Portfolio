@@ -25,9 +25,9 @@ export default function Home() {
           >
             {/* Main title with warp effect */}
             <motion.h1
-              className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan via-white to-magenta relative"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
+              className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan via-white to-magenta relative leading-tight"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             >
               Gaurav Yadav
             </motion.h1>
