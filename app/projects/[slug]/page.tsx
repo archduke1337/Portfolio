@@ -6,8 +6,13 @@ import { motion } from 'framer-motion';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
-  const project = getProjectBySlug(params.slug);
+export default function ProjectDetailPage({ 
+  params 
+}: { 
+  params: any
+}) {
+  const slug = typeof params.slug === 'string' ? params.slug : (params as any).slug;
+  const project = getProjectBySlug(slug);
 
   if (!project) {
     notFound();

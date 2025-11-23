@@ -1,21 +1,17 @@
 import type { Config } from 'tailwindcss';
-import { heroui } from '@heroui/react';
+import { nextui } from '@nextui-org/react';
 
 const config: Config = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-    './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       colors: {
         cyan: '#00eeff',
         magenta: '#ff00ff',
-      },
-      backgroundImage: {
-        'glass-light': 'rgba(255, 255, 255, 0.06)',
-        'glass-border': 'rgba(255, 255, 255, 0.12)',
       },
       backdropBlur: {
         glass: '24px',
@@ -42,7 +38,7 @@ const config: Config = {
     },
   },
   darkMode: 'class',
-  plugins: [heroui()],
+  plugins: [nextui()],
 };
 
 export default config;
