@@ -2,9 +2,12 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Button, Divider } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 export const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const navItems = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
@@ -24,6 +27,8 @@ export const Navbar = () => {
         <Link href="/" className="text-2xl font-black bg-gradient-to-r from-cyan to-blue bg-clip-text text-transparent hover:opacity-80 transition-opacity duration-200">
           Gaurav
         </Link>
+        
+        {/* Desktop Navigation */}
         <div className="hidden md:flex gap-8 items-center">
           {navItems.map((item) => (
             <motion.div key={item.href} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -37,15 +42,61 @@ export const Navbar = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Desktop Contact Button */}
         <Button
           as={Link}
           href="/contact"
-          className="ml-auto bg-gradient-to-r from-cyan to-blue text-black font-bold px-6 shadow-lg shadow-cyan/50 hover:shadow-cyan/70 transition-shadow duration-200"
+          className="hidden md:inline-flex bg-gradient-to-r from-cyan to-blue text-black font-bold px-6 shadow-lg shadow-cyan/50 hover:shadow-cyan/70 transition-shadow duration-200"
           size="sm"
         >
           Contact
         </Button>
+
+        {/* Mobile Menu Button */}
+        <motion.button
+          className="md:hidden p-2"
+          onClick={() => setIsOpen(!isOpen)}
+          whileTap={{ scale: 0.95 }}
+        >
+          {isOpen ? (
+            <X size={24} className="text-cyan" />
+          ) : (
+            <Menu size={24} className="text-cyan" />
+          )}
+        </motion.button>
       </div>
+
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="md:hidden bg-black/60 backdrop-blur-lg border-b border-cyan/20 px-6 py-4 space-y-4"
+        >
+          {navItems.map((item) => (
+            <motion.div key={item.href} whileHover={{ x: 5 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href={item.href}
+                className="block text-sm font-semibold text-gray-300 hover:text-cyan transition-colors duration-200"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </Link>
+            </motion.div>
+          ))}
+          <Button
+            as={Link}
+            href="/contact"
+            className="w-full bg-gradient-to-r from-cyan to-blue text-black font-bold shadow-lg shadow-cyan/50"
+            size="sm"
+            onClick={() => setIsOpen(false)}
+          >
+            Contact
+          </Button>
+        </motion.div>
+      )}
     </motion.nav>
   );
 };
