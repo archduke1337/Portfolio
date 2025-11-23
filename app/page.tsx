@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <Navbar />
 
-      <main className="relative min-h-screen flex items-center justify-center pt-20">
+      <main className="relative min-h-screen flex items-center justify-center pt-32 pb-20">
         {/* Hero section */}
         <div className="w-full max-w-6xl mx-auto px-6 py-20">
           <motion.div
@@ -25,7 +25,7 @@ export default function Home() {
           >
             {/* Main title with warp effect */}
             <motion.h1
-              className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan via-white to-magenta relative leading-tight"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan via-white to-magenta relative leading-tight"
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             >

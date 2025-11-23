@@ -34,7 +34,7 @@ export const Navbar = () => {
             <motion.div key={item.href} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href={item.href}
-                className="text-sm font-semibold text-gray-300 hover:text-cyan transition-colors duration-200 relative group"
+                className="text-sm font-semibold text-gray-200 hover:text-cyan transition-colors duration-200 relative group"
               >
                 {item.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan to-blue group-hover:w-full transition-all duration-300" />
@@ -70,16 +70,16 @@ export const Navbar = () => {
       {/* Mobile Navigation */}
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-black/60 backdrop-blur-lg border-b border-cyan/20 px-6 py-4 space-y-4"
+          exit={{ opacity: 0, y: -30 }}
+          className="md:hidden fixed top-16 left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-cyan/30 px-6 py-6 space-y-4 z-40"
         >
           {navItems.map((item) => (
             <motion.div key={item.href} whileHover={{ x: 5 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href={item.href}
-                className="block text-sm font-semibold text-gray-300 hover:text-cyan transition-colors duration-200"
+                className="block text-sm font-semibold text-gray-200 hover:text-cyan transition-colors duration-200 py-2"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
